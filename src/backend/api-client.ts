@@ -1,4 +1,5 @@
 'use client'
+import type { User } from '@/types'
 import { createClient } from '@supabase/supabase-js'
 
 import type { SupabaseClient } from '@supabase/supabase-js'
@@ -36,7 +37,12 @@ export const getAllUsers = async () => {
       return []
     }
 
-    return users
+    const usersInitalized = users.map((user) => ({
+      ...user,
+      created_at: new Date(user.created_at),
+    })) as User[]
+
+    return usersInitalized
   } catch (error) {
     console.error(`Can not fetch users: ${error}`)
   }
