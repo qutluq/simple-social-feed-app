@@ -45,7 +45,7 @@ export const NewsFeed = () => {
   }, [])
 
   return (
-    <div className="flex h-96 w-[500px] flex-col items-center justify-center bg-white text-lg font-bold">
+    <div className="flex h-96 w-[500px] flex-col items-center justify-center rounded-xl bg-white text-lg font-bold">
       {!feed
         ? 'Loading...'
         : feed.map((news) => <div key={news.id}>{news.title}</div>)}
