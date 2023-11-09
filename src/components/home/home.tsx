@@ -13,11 +13,7 @@ export const Home = () => {
     getAllUsers()
       .then((response) => {
         if (!response) return
-        const usersRaw = response.map((user) => ({
-          ...user,
-          created_at: new Date(user.created_at),
-        })) as User[]
-        setUsers(() => usersRaw)
+        setUsers(() => response)
       })
       .catch((error) => {
         console.error(`Users fetch failed: ${error}`)
