@@ -10,11 +10,11 @@ export const Header = () => {
             <Image src="/assets/logo.png" alt="Logo" width={48} height={48} />
 
             <div className="flex flex-col items-center">
-              <div className="flex flex-row gap-2">
-                <span className="text-[#ef2626]">Social</span>
-                <span className="text-[#6e7721]">Feed</span>
+              <div className="flex flex-row gap-2 text-black">
+                <span>Social</span>
+                <span>Feed</span>
               </div>
-              <span className="text-[#26ef58]">World</span>
+              <span>World</span>
             </div>
           </div>
         </Link>
