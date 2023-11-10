@@ -15,9 +15,13 @@ export const Login = () => {
           Sign in to SF World
         </span>
 
-        <div className="flex flex-col justify-start gap-2">
+        <form
+          className="flex flex-col justify-start gap-2"
+          onSubmit={handleSignIn}
+        >
           <div className="text-[var(--color-text-secondary)]">
             <input
+              autoComplete="current-email"
               value={email}
               onChange={(e) => {
                 setEmail(() => e.target.value)
@@ -29,6 +33,7 @@ export const Login = () => {
           </div>
           <div className="text-[var(--color-text-secondary)]">
             <input
+              autoComplete="current-password"
               value={password}
               onChange={(e) => {
                 setPassword(() => e.target.value)
@@ -43,6 +48,7 @@ export const Login = () => {
             className="flex flex-row items-center gap-1 pl-1 text-sm text-[var(--color-text-secondary)]"
           >
             <input
+              autoComplete="current-email-checkbox"
               id="saveEmailCheckbox"
               checked={saveEmailChecked}
               onChange={(e) => {
@@ -55,14 +61,12 @@ export const Login = () => {
           </label>
 
           <button
-            onClick={() => {
-              console.log('pressed')
-            }}
+            type="submit"
             className="rounded-md border bg-blue-700 p-1 text-white hover:bg-blue-600"
           >
             Sign in
           </button>
-        </div>
+        </form>
       </div>
     </div>
   )
