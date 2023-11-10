@@ -11,27 +11,27 @@ export interface Database {
     Tables: {
       news: {
         Row: {
-          author_id: number
+          author_id: string | null
           body: string | null
           created_at: string
           date: string | null
-          id: number
+          id: string
           title: string | null
         }
         Insert: {
-          author_id: number
+          author_id?: string | null
           body?: string | null
           created_at?: string
           date?: string | null
-          id?: number
+          id: string
           title?: string | null
         }
         Update: {
-          author_id?: number
+          author_id?: string | null
           body?: string | null
           created_at?: string
           date?: string | null
-          id?: number
+          id?: string
           title?: string | null
         }
         Relationships: [
@@ -47,11 +47,10 @@ export interface Database {
       user: {
         Row: {
           about: string | null
-          author_id: number | null
           created_at: string
           email: string
           firstname: string | null
-          id: number
+          id: string
           image: string | null
           lastname: string | null
           password: string
@@ -59,11 +58,10 @@ export interface Database {
         }
         Insert: {
           about?: string | null
-          author_id?: number | null
           created_at?: string
           email: string
           firstname?: string | null
-          id?: number
+          id: string
           image?: string | null
           lastname?: string | null
           password?: string
@@ -71,25 +69,16 @@ export interface Database {
         }
         Update: {
           about?: string | null
-          author_id?: number | null
           created_at?: string
           email?: string
           firstname?: string | null
-          id?: number
+          id?: string
           image?: string | null
           lastname?: string | null
           password?: string
           username?: string
         }
-        Relationships: [
-          {
-            foreignKeyName: "user_author_id_fkey"
-            columns: ["author_id"]
-            isOneToOne: false
-            referencedRelation: "user"
-            referencedColumns: ["id"]
-          }
-        ]
+        Relationships: []
       }
     }
     Views: {
