@@ -1,15 +1,31 @@
 'use client'
 import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+
+import type { Database } from '@/types/database.types'
 export const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [saveEmailChecked, setSaveEmailChecked] = useState(false)
+  const router = useRouter()
+  const supabase = createClientComponentClient<Database>()
+
+  const handleSignIn = async (e) => {
+    e.preventDefault()
+    await supabase.auth.signInWithPassword({
+      email,
+      password,
+    })
+    router.refresh()
+  }
 
   return (
     <div className="flex w-72 flex-col items-center rounded-md bg-white p-5">
-      <div className="flex flex-col items-center gap-3">
+      <div className="flex flex-col items-center gap-2">
         <Image src="/assets/logo.png" alt="Logo" width={64} height={64} />
         <span className="text-lg font-semibold tracking-wide">
           Sign in to SF World
@@ -67,6 +83,9 @@ export const Login = () => {
             Sign in
           </button>
         </form>
+        <Link href="/signup" className="text-[var(--color-text-primary)]">
+          Sign up
+        </Link>
       </div>
     </div>
   )
