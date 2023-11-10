@@ -11,7 +11,7 @@ body {
   :root {
     --color-primary: #4ac4cf;
     --color-secondary: #94949417;
-    --color-text-primary: #f0f0f0e6;
-    --color-text-secondary: #f0f0f0b3;
+    --color-text-primary: #000000b3;
+    --color-text-secondary: #818c80;
   }
 }
